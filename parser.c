@@ -33,19 +33,22 @@ char  *find_end(char *str,char *cat)
 {
 int i;
 i = 0;
-while(*str != '\0')
+char *doggy;
+doggy = cat;
+while(*str != '\n')
 {
 
 if (*str >= 'a' && *str <= 'z')
 {
 *cat= *str;
+str++;
 cat++;
 }
 str++;
 
 }
 printf("%s",cat);
-return str;
+return doggy;
 }
 int	ft_strlenV2(char *str)
 {
@@ -67,7 +70,6 @@ int main(void)
 	int		size;
 	int 	file_size;
 	char 	*nodumbray;
-	char	dumb[20];
 	file_size = 0;
 	size = BUFFER;
 
@@ -80,5 +82,6 @@ while(size  == BUFFER)
 file_size += read(file,buffer,BUFFER);
 size = read(file,buffer,BUFFER);
 }
-nodumbray = find_end(buffer,dumb);
+nodumbray = find_end(buffer,nodumbray);
+printf("%s",nodumbray);
 }
