@@ -28,42 +28,57 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char *ft_strdup(char *src)
+
+char  *find_end(char *str,char *cat)
 {
-	char	*copy;
-	size_t	size;
-	int	i;
+int i;
+i = 0;
+while(*str != '\0')
+{
 
-	i = 0  ;
-	size = ft_strlen(src);
-	copy = (char *)malloc(size + 1);
-		while(src[i])
-		{
-			copy[i] = src[i];
-			i++;
-		}
-		copy[i] = '\0';
-
-return copy;
+if (*str >= 'a' && *str <= 'z')
+{
+*cat= *str;
+cat++;
+}
+str++;
 
 }
+printf("%s",cat);
+return str;
+}
+int	ft_strlenV2(char *str)
+{
+	int		lenght;
+	char	*string_ln;
 
+	string_ln = str;
+	lenght = 0;
+	while (*string_ln != '\0')
+	{
+	lenght += ft_str_is_alpha(string_ln);
+		string_ln++;
+	}	
+	return (lenght);
+}
 int main(void)
 {
-char *buffer;
-int size;
-int file_size;
-char **nodumbray;
-file_size = 0;
-size = BUFFER;
-buffer = (char *)malloc(sizeof(char) * 700);
+	char *buffer;
+	int		size;
+	int 	file_size;
+	char 	*nodumbray;
+	char	dumb[20];
+	file_size = 0;
+	size = BUFFER;
+
+buffer = (char *)malloc(sizeof(char) * file_size + 1);
+
 int file = open("only.txt",O_RDONLY);
-nodumbray = (char **)malloc(sizeof(char) * ft_strlen(buffer));
+nodumbray = (char *)malloc(sizeof(char) * ft_strlenV2(buffer) + 1);
 while(size  == BUFFER)
 {
 file_size += read(file,buffer,BUFFER);
 size = read(file,buffer,BUFFER);
 }
-
-buffer = (char *)malloc(sizeof(char) * file_size + 1);
+nodumbray = find_end(buffer,dumb);
 }
