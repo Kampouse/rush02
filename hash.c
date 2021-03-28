@@ -49,7 +49,7 @@ void init_hash_table()
 	while(*value)
 	{
 		output += *value;
-		output = (output * *value) % LENGHT;
+		output = ((output * *value) + 42 ) % LENGHT;
 		value++;
 	}
 	return output;
@@ -81,24 +81,24 @@ void init_hash_table()
 	{
 	if (p == NULL) 
 		return (0);
-	int index = hash(p->ascci);
+	int index = hash(p->number);
 	p->next = hash_table[index];
 	hash_table[index]= p;
 	if (hash_table[index] != NULL)
 		return (0); //to eddit;
 	return (1);
 }
-struct elems *hash_find(char *name)
+struct elems *hash_find(char *number)
 {
-unsigned int index = hash(name);
+unsigned int index = hash(number);
 	elemes *tmp = hash_table[index];
-	while(tmp != NULL && ft_strncmp(tmp->ascci,name,LENGHT)!= 0)
+	while(tmp != NULL && ft_strncmp(tmp->number,number,LENGHT)!= 0)
 	{
 		tmp = tmp->next;	
 	}
 	return tmp;
 	if (hash_table[index] != NULL &&
-	ft_strncmp(hash_table[index] -> ascci,name,LENGHT) == 0)
+	ft_strncmp(hash_table[index] -> number,number,LENGHT) == 0)
 	return hash_table[index];
 	else
 		return NULL;
@@ -111,7 +111,7 @@ struct elems johny = {.number="100",.ascci = "reniwgw"};
 init_hash_table();
 hash_table_insert(&john);
 hash_table_insert(&johny);
-struct elems *tmp = hash_find("hundred");
+struct elems *tmp = hash_find("22");
 printf("%shere",tmp->ascci);
 print_table();
 printf("%u\n",hash("10"));
