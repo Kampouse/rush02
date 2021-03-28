@@ -5,13 +5,11 @@
 
 #define LENGHT 40
 typedef struct node node_t;  
-typedef struct elems{
-	
-	char number[LENGHT];
-	char ascci[LENGHT];
-	struct elems *next;
+	typedef struct elems{
+		char number[LENGHT];
+		char ascci[LENGHT];
+		struct elems *next;
 }elemes;
-
 
 struct elems * hash_table[LENGHT];
 
@@ -27,8 +25,6 @@ int	ft_strncmp(char *str1, char *str2, unsigned int n)
 	}
 	return (0);
 }
-
-
 
 void init_hash_table()
 {
@@ -75,8 +71,6 @@ void init_hash_table()
 		i++;
 	}
 }
-
-
 	int hash_table_insert(struct elems *p) 
 	{
 	if (p == NULL) 
@@ -107,11 +101,9 @@ unsigned int index = hash(number);
 int main(void)
 {
 struct elems john = {.number="100",.ascci = "hundred"};
-struct elems johny = {.number="100",.ascci = "reniwgw"};
 init_hash_table();
 hash_table_insert(&john);
-hash_table_insert(&johny);
-struct elems *tmp = hash_find("22");
+struct elems *tmp = hash_find("100");
 printf("%shere",tmp->ascci);
 print_table();
 printf("%u\n",hash("10"));
