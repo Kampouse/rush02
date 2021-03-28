@@ -6,13 +6,23 @@
 /*   By: jean-phil <jemartel@student.42quebec>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 11:57:25 by jean-phil         #+#    #+#             */
-/*   Updated: 2021/03/28 14:13:55 by jean-phil        ###   ########.fr       */
+/*   Updated: 2021/03/28 15:21:31 by jean-phil        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdio.h"
 #include "unistd.h"
 #include "stdlib.h"
+
+#define LENGHT 40
+
+	typedef struct elems{
+		char number[LENGHT];
+		char string[LENGHT];
+}elemes;
+
+
+
 
 
 
@@ -35,15 +45,23 @@ int	ft_str_is_numeric (char *str)
 	return (0);
 }
 
-int ft_strft(int number,int str,char *string)
+struct elems ft_strft(char *string ,struct elems *value)
 {
-char *copyNumber;
-char *copyStr;
+int i;
+i = 0;
+//copyNumber  = (char *)malloc(number+ 1);
+//copyStr = (char *)malloc(str+ 1);
+while(*string != '\0')
+{
+if(ft_str_is_numeric(string))
+	value->string[i] = *string;
+if(ft_str_is_alpha(string))
+	value->number[i] = *string;
+i++;
+string++;
+}
 
-
-copyNumber  = (char *)malloc(number+ 1);
-copyStr = (char *)malloc(str+ 1);
-
+return(*value);
 
 }
 
@@ -57,14 +75,16 @@ int *ft_strlenghts(char *target)
 		target++;
 	}
 	
-return number;
+return 0;
 }
 
 
 int main(void)
 {
 
+struct elems john = {.number="100",.string= "hundred"};
 char *string ="3233333 ;;;;; aaaaaaaa";
-ft_strlenghts(string);
+ john = ft_strft(string,&john);
 
+printf("%shere",john.number);
 }
