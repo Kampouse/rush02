@@ -1,15 +1,10 @@
 #include "unistd.h"
 #include  "stdlib.h"
 #include  "stdio.h"
-
+#include "rush02.h"
 
 #define LENGHT 40
 #define HEIGHT 42
-	typedef struct holder{
-		char number[LENGHT];
-		char ascci[LENGHT];
-		struct holder *next;
-}elemes;
 
 struct holder * hash_table[HEIGHT];
 
@@ -64,7 +59,7 @@ void init_hash_table()
 				struct holder  *tmp= hash_table[i];
 		while(tmp != NULL)
 		{
-			printf("\t%i\t%s\n",i, hash_table[i] -> ascci);	
+			printf("\t%i\t%s\n",i, hash_table[i] -> assci);	
 			tmp = tmp -> next;
 		}
 		}
@@ -85,7 +80,7 @@ void init_hash_table()
 struct holder *hash_find(char *number)
 {
 unsigned int index = hash(number);
-	elemes *tmp = hash_table[index];
+	struct holder  *tmp = hash_table[index];
 	while(tmp != NULL && ft_strncmp(tmp->number,number,LENGHT)!= 0)
 	{
 		tmp = tmp->next;	
@@ -98,7 +93,7 @@ unsigned int index = hash(number);
 		return NULL;
 }
 
-int main(void)
+/*int main(void)
 {
 struct holder john = {.number="100",.ascci = "hundred"};
 
@@ -116,4 +111,4 @@ printf("%u\n",hash("5"));
 printf("%u\n",hash("6"));
 
 
-}
+} */

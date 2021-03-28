@@ -6,7 +6,7 @@
 /*   By: jean-phil <jemartel@student.42quebec>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 11:57:25 by jean-phil         #+#    #+#             */
-/*   Updated: 2021/03/28 18:13:20 by jean-phil        ###   ########.fr       */
+/*   Updated: 2021/03/28 18:16:26 by jean-phil        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ value->number[i] = '\0';
 return(*value);
 }
 
-int main(void)
+/* int main(void)
 {
 struct sweeper john = {.number="100",.string= "john",.location = 0};
 char *string ="f";
  john = ft_strft(string,&john);
 
 printf("%dshere",john.location);
-}
+}  */
