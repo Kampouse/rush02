@@ -6,7 +6,7 @@
 /*   By: jean-phil <jemartel@student.42quebec>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 11:57:25 by jean-phil         #+#    #+#             */
-/*   Updated: 2021/03/28 12:25:22 by jean-phil        ###   ########.fr       */
+/*   Updated: 2021/03/28 12:58:47 by jean-phil        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include "unistd.h"
 #include "stdlib.h"
 
+
+
+int	ft_str_is_alpha (char *str)
+{
+		if (!((*str >= 'A' && *str <= 'Z') || (*str >= 'a' && *str <= 'z')))
+			return (0);
+	return (1);
+}
 
 
 				
@@ -25,30 +33,28 @@ int	ft_str_is_numeric (char *str)
 			return 0;		
 	return (0);
 }
-char *number_find(char *input)
-{
-char *output;
-char *tmp;
-output = input;
-tmp = output;
-	while(*input != '\0')
-	{
 
-		if(ft_str_is_numeric(input))
-		{
-			*output = *input;	
-			output++;
-		}
-input++;
+
+char	*ft_strncpy(char *target)
+{
+	int number;
+	number = 0;
+	while(*target != '\0')
+	{
+		 number += ft_str_is_alpha(target);
+
+			 target++;
+	}
+printf("%d",number);
+return target;
 }
-return tmp;
-}
+
 
 
 int main(void)
 {
 
-char *string ="3222222: three";
-number_find(string);
+char *string ="32  ; ;";
+ft_strncpy(string);
 
 }
