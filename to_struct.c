@@ -6,22 +6,23 @@
 /*   By: jean-phil <jemartel@student.42quebec>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 11:57:25 by jean-phil         #+#    #+#             */
-/*   Updated: 2021/03/28 15:52:15 by jean-phil        ###   ########.fr       */
+/*   Updated: 2021/03/28 17:07:26 by jean-phil        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdio.h"
 #include "unistd.h"
 #include "stdlib.h"
+#include "rush02.h"
 
 #define LENGHT 40
 
-	typedef struct elems{
+	typedef struct sweeper{
 		char number[LENGHT];
 		char string[LENGHT];
-		char *location;
+		int location;
 		
-}elemes;
+}sweeper;
 
 int	ft_str_is_alpha (char *str)
 {
@@ -40,45 +41,46 @@ int	ft_str_is_numeric (char *str)
 	return (0);
 }
 
-struct elems ft_strft(char *string ,struct elems *value)
+int	ft_strlen(char *str)
 {
-int i;
-i = 0;
-while(*string != '\n')
+	int		lenght;
+	char	*string_ln;
+
+	string_ln = str;
+	lenght = 0;
+	while (*string_ln != '\0' && *string_ln != '\n')
+	{
+		lenght++;
+		string_ln++;
+	}	
+	return (lenght);
+}
+struct sweeper ft_strft(char *string ,struct sweeper *value)
 {
-if(ft_str_is_numeric(string))
-	value->string[i] = *string;
-if(ft_str_is_alpha(string))
-	value->number[i] = *string;
+int		i;
+	i = 0;
+
+value->location = ft_strlen(string) + 2;
+//might cause problem.. ether one or two
+while(*string != '\n'  && *string != '\0')
+{
+	if(ft_str_is_numeric(string))
+		value->string[i] = *string;
+	if(ft_str_is_alpha(string))
+		value->number[i] = *string;
 i++;
 string++;
 }
 value->string[i] = '\0';
 value->number[i] = '\0';
-value->location = string;
 return(*value);
 }
 
-int *ft_strlenghts(char *target)
-{
-	int number[2];
-	while(*target != '\0')
-	{
-		 number[0] += ft_str_is_alpha(target);
-		 number[1] += ft_str_is_numeric(target);
-		target++;
-	}
-	
-return 0;
-}
-
-
 int main(void)
 {
-
-struct elems john = {.number="100",.string= "hundred",.location = NULL};
-char *string ="3233333 ;;;;; \n aaaaaaaa";
+struct sweeper john = {.number="100",.string= "john",.location = 0};
+char *string ="f";
  john = ft_strft(string,&john);
 
-printf("%shere",john.number);
+printf("%dshere",john.location);
 }

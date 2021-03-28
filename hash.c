@@ -4,14 +4,14 @@
 
 
 #define LENGHT 40
-typedef struct node node_t;  
-	typedef struct elems{
+#define HEIGHT 42
+	typedef struct holder{
 		char number[LENGHT];
 		char ascci[LENGHT];
-		struct elems *next;
+		struct holder *next;
 }elemes;
 
-struct elems * hash_table[LENGHT];
+struct holder * hash_table[HEIGHT];
 
 int	ft_strncmp(char *str1, char *str2, unsigned int n)
 {
@@ -61,7 +61,7 @@ void init_hash_table()
 		printf("\t%i\t-----\n",i);	
 		}
 		else {
-				struct elems  *tmp= hash_table[i];
+				struct holder  *tmp= hash_table[i];
 		while(tmp != NULL)
 		{
 			printf("\t%i\t%s\n",i, hash_table[i] -> ascci);	
@@ -71,7 +71,7 @@ void init_hash_table()
 		i++;
 	}
 }
-	int hash_table_insert(struct elems *p) 
+	int hash_table_insert(struct holder *p) 
 	{
 	if (p == NULL) 
 		return (0);
@@ -82,7 +82,7 @@ void init_hash_table()
 		return (0); //to eddit;
 	return (1);
 }
-struct elems *hash_find(char *number)
+struct holder *hash_find(char *number)
 {
 unsigned int index = hash(number);
 	elemes *tmp = hash_table[index];
@@ -100,10 +100,11 @@ unsigned int index = hash(number);
 
 int main(void)
 {
-struct elems john = {.number="100",.ascci = "hundred"};
+struct holder john = {.number="100",.ascci = "hundred"};
+
 init_hash_table();
 hash_table_insert(&john);
-struct elems *tmp = hash_find("100");
+struct holder *tmp = hash_find("100");
 printf("%shere",tmp->ascci);
 print_table();
 printf("%u\n",hash("10"));
