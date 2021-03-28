@@ -6,7 +6,9 @@
 #define BUFFER 4096
 
 
+	char	dog[40];
 
+#define init_value { "", "", 0 }
 int main(void)
 {
 	char *buffer;
@@ -16,7 +18,7 @@ int main(void)
 	size = BUFFER;
 
 buffer = (char *)malloc(sizeof(char) * file_size + 1);
-struct sweeper john = {.number="100",.string = "hundred",.location = 0};
+struct sweeper john = init_value;
 
 
 init_hash_table();
@@ -28,6 +30,6 @@ file_size += read(file,buffer,BUFFER);
 size = read(file,buffer,BUFFER);
 }
 john = ft_strft(buffer,&john);
-printf("%s",buffer);
-printf("%dshere",john.location);
+printf("%s",john.string);
+printf("%s",john.number);
 }

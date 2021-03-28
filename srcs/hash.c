@@ -66,7 +66,7 @@ void init_hash_table()
 		i++;
 	}
 }
-	int hash_table_insert(struct holder *p) 
+int hash_table_insert(struct holder *p) 
 	{
 	if (p == NULL) 
 		return (0);

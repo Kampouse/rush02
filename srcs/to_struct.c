@@ -6,7 +6,7 @@
 /*   By: jean-phil <jemartel@student.42quebec>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 11:57:25 by jean-phil         #+#    #+#             */
-/*   Updated: 2021/03/28 18:16:26 by jean-phil        ###   ########.fr       */
+/*   Updated: 2021/03/28 19:55:54 by jean-phil        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int		i;
 
 value->location = ft_strlen(string) + 2;
 //might cause problem.. ether one or two
-while(*string != '\n'  && *string != '\0')
+
+while (*string != '\n' && *string!= '\0')
 {
 	if(ft_str_is_numeric(string))
 		value->string[i] = *string;
@@ -65,6 +66,7 @@ i++;
 string++;
 }
 value->string[i] = '\0';
+printf("%s",string);
 value->number[i] = '\0';
 return(*value);
 }
